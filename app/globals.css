@@ -1,0 +1,4 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-slate-50 text-slate-800}
+.input{@apply w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-cyan}
+.btn{@apply rounded-lg bg-navy px-4 py-2 font-medium text-white disabled:opacity-50}
