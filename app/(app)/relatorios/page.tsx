@@ -34,9 +34,9 @@ export default function Relatorios(){
     ["Total atrasado (hoje)",brl(soma(abertas.filter((x:any)=>x.status==="atrasado"),"remaining_amount")),"text-red-600"],
     ["Receitas no período",brl(rec),"text-green-600"],["Despesas no período",brl(desp),"text-red-600"]];
   function csv(){
-    const L=[["Cliente","Descrição","Data da venda","Vencimento","Valor","Pago","Saldo","Situação"],
+    const L:any[][]=[["Cliente","Descrição","Data da venda","Vencimento","Valor","Pago","Saldo","Situação"],
       ...doPeriodo.map((x:any)=>[nome(x.customer_id),x.description,dataBR(x.sale_date),dataBR(x.due_date),x.amount,x.paid_amount,x.remaining_amount,x.status])];
-    const txt=L.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""').replace(/^([=+\-@])/,"'$1")}"`).join(";")).join("\n");
+    const txt=L.map((r:any[])=>r.map((c:any)=>`"${String(c).replace(/"/g,'""').replace(/^([=+\-@])/,"'$1")}"`).join(";")).join("\n");
     const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+txt],{type:"text/csv;charset=utf-8"}));
     a.download=`recebeja_${de}_${ate}.csv`;a.click();
   }
